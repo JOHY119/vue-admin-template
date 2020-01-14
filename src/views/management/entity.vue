@@ -22,7 +22,7 @@ export default {
     return {
       tabMapOptions: [
         { label: '集团', key: 'corporation' },
-        { label: '公司', key: 'farm' },
+        { label: '养殖场', key: 'farm' },
         { label: '养殖舍', key: 'house' }
       ],
       activeName: 'corporation',
