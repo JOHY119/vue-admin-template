@@ -7,3 +7,12 @@ export function getList(params) {
     params
   })
 }
+
+export function getRoomId(params) {
+  return request({
+    url: '/table/roomId',
+    method: 'get',
+    params
+  })
+}
+

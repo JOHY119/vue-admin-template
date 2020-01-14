@@ -1,32 +1,58 @@
 <template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
-    <div class="dashboard-text">roles: <span v-for="role in roles" :key="role">{{ role }}</span></div>
+  <div class="map-container">
+    <div style="position: absolute;top: 5vh;right: 1vh;background-color: rgba(0,0,0,.1);height: 300px;width: 200px;z-index: 1;display: flex;flex-flow: row wrap;color: white;border: 1px solid #256;padding: 20px;">
+      <span>厂数量：<span>1000</span>台</span>
+      <span>联网数量：<span>1000</span>台</span>
+      <span>未联网数量：<span>1000</span>台</span>
+    </div>
+    <!--    <map-chart height="100%" width="100%" :chart-data="mapData"/>-->
+    <AMap height="100%" width="100%" :chart-data="mapData"/>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+  // import MapChart from './components/MapChart'
+  import AMap from './components/AMap'
 
-export default {
-  name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
+  export default {
+    name: 'DashboardAdmin',
+    components: {
+      // MapChart,
+      AMap
+    },
+    data() {
+      return {
+        mapData: []
+      }
+    },
+    methods: {}
   }
-}
 </script>
 
 <style lang="scss" scoped>
-.dashboard {
-  &-container {
-    margin: 30px;
+  .map-container {
+    /*padding: 20px;*/
+    background-color: rgb(240, 242, 245);
+    position: relative;
+    height: calc(100vh - 50px);
+
+    .github-corner {
+      position: absolute;
+      top: 0;
+      border: 0;
+      right: 0;
+    }
+
+    .chart-wrapper {
+      background: #fff;
+      padding: 16px 16px 0;
+      margin-bottom: 32px;
+    }
   }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
+
+  @media (max-width: 1024px) {
+    .chart-wrapper {
+      padding: 8px;
+    }
   }
-}
 </style>

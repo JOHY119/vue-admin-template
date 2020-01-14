@@ -1,0 +1,255 @@
+[
+  {
+    "item": "主页参数",
+    "data": [
+      {
+        "key": "id",
+        "description": "舍号"
+      },
+      {
+        "key": "days",
+        "description": "日龄"
+      },
+      {
+        "key": "temperature",
+        "description": "实测温度"
+      },
+      {
+        "key": "moisture",
+        "description": "实测湿度"
+      },
+      {
+        "key": "pressure",
+        "description": "实测负压"
+      },
+      {
+        "key": "num_fans",
+        "description": "风机数量"
+      },
+      {
+        "key": "angle_window",
+        "description": "小窗角度"
+      },
+      {
+        "key": "angle_door",
+        "description": "保温门角度"
+      },
+      {
+        "key": "is_pump",
+        "description": "水泵"
+      },
+      {
+        "key": "is_heating",
+        "description": "加热"
+      },
+      {
+        "key": "is_light",
+        "description": "灯光"
+      },
+      {
+        "key": "numbers",
+        "description": "存栏量"
+      }
+    ]
+  },
+  {
+    "item": "当前温度",
+    "data": [
+      {
+        "key": "temperature1",
+        "description": "温度1"
+      },
+      {
+        "key": "temperature2",
+        "description": "温度2"
+      },
+      {
+        "key": "temperature3",
+        "description": "温度3"
+      },
+      {
+        "key": "temperature4",
+        "description": "温度4"
+      },
+      {
+        "key": "temperature5",
+        "description": "温度5"
+      },
+      {
+        "key": "temperature6",
+        "description": "温度6"
+      },
+      {
+        "key": "ventilation",
+        "description": "通风量"
+      },
+      {
+        "key": "wind_speed_longitudinal",
+        "description": "纵向风速"
+      },
+      {
+        "key": "alarm_temperature_low",
+        "description": "低温报警温度"
+      },
+      {
+        "key": "temperature_target",
+        "description": "目标温度"
+      },
+      {
+        "key": "alarm_temperature_high",
+        "description": "高温报警温度"
+      },
+      {
+        "key": "temperature_heating",
+        "description": "加热温度"
+      },
+      {
+        "key": "temperature_ventilation_longitudinal",
+        "description": "纵向通风温度"
+      }
+    ]
+  },
+  {
+    "item": "主要参数",
+    "data": [
+      {
+        "key": "temperature_current",
+        "description": "当前温度"
+      },
+      {
+        "key": "temperature_apparent",
+        "description": "体感温度"
+      },
+      {
+        "key": "days",
+        "description": "当前日龄"
+      },
+      {
+        "key": "ventilation_level",
+        "description": "通风级别"
+      },
+      {
+        "key": "window1",
+        "description": "小窗1"
+      },
+      {
+        "key": "door1",
+        "description": "保温门1"
+      },
+      {
+        "key": "temperature_target",
+        "description": "目标温度"
+      },
+      {
+        "key": "temperature_relative",
+        "description": "相对温度"
+      },
+      {
+        "key": "pressure_current",
+        "description": "当前负压"
+      },
+      {
+        "key": "co2",
+        "description": "二氧化碳"
+      },
+      {
+        "key": "window2",
+        "description": "小窗2"
+      },
+      {
+        "key": "door2",
+        "description": "保温门2"
+      },
+      {
+        "key": "curtain",
+        "description": "幕帘"
+      }
+    ]
+  },
+  {
+    "item": "水料量记录",
+    "data": [
+      {
+        "key": "water_today",
+        "description": "今日用水量"
+      },
+      {
+        "key": "feed_today",
+        "description": "今日用料量"
+      },
+      {
+        "key": "feed_per",
+        "description": "只鸡耗料量"
+      },
+      {
+        "key": "amount_initial",
+        "description": "初始数量"
+      },
+      {
+        "key": "amount_remain",
+        "description": "剩余数量"
+      },
+      {
+        "key": "water_total",
+        "description": "总用水量"
+      },
+      {
+        "key": "feed_total",
+        "description": "总用料量"
+      },
+      {
+        "key": "death_add",
+        "description": "新增死淘"
+      },
+      {
+        "key": "death_total",
+        "description": "累计死淘"
+      }
+    ]
+  },
+  {
+    "item": "其他状态",
+    "data": [
+      {
+        "key": "is_alarm",
+        "description": "报警"
+      },
+      {
+        "key": "is_heating1",
+        "description": "加热1"
+      },
+      {
+        "key": "is_heating2",
+        "description": "加热2"
+      },
+      {
+        "key": "is_heating3",
+        "description": "加热3"
+      },
+      {
+        "key": "is_light",
+        "description": "照明"
+      },
+      {
+        "key": "is_pump",
+        "description": "冷却水泵"
+      },
+      {
+        "key": "is_feed",
+        "description": "料线"
+      },
+      {
+        "key": "is_spray",
+        "description": "喷雾"
+      },
+      {
+        "key": "is_curtain_on",
+        "description": "幕帘开"
+      },
+      {
+        "key": "is_curtain_off",
+        "description": "幕帘关"
+      }
+    ]
+  }
+]

@@ -51,32 +51,136 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '智慧养殖平台', noCache: true, icon: 'dashboard' }
     }]
   },
-
   {
-    path: '/example',
+    path: '/management',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/management/entity',
+    name: 'Management',
+    meta: {
+      title: '管理',
+      icon: 'chart'
+    },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'entity',
+        name: 'Entity',
+        component: () => import('@/views/management/entity'),
+        meta: { title: '实体管理', noCache: true, icon: 'chart' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'accounts',
+        name: 'Accounts',
+        component: () => import('@/views/management/accounts'),
+        meta: { title: '用户管理', noCache: true, icon: 'chart' }
       }
     ]
   },
-
+  {
+    path: '/chart',
+    component: Layout,
+    redirect: '/chart/bar2',
+    name: 'Chart',
+    meta: {
+      title: '图表',
+      icon: 'chart'
+    },
+    children: [
+      // {
+      //   path: 'bar',
+      //   name: 'BarMain',
+      //   component: () => import('@/views/bar/index'),
+      //   meta: { title: '柱状图', icon: 'chart' }
+      // },
+      // {
+      //   path: 'line',
+      //   name: 'LineMain',
+      //   component: () => import('@/views/line/index'),
+      //   meta: { title: '折线图', icon: 'chart' }
+      // },
+      {
+        path: 'line2',
+        name: 'Line2',
+        component: () => import('@/views/charts/line'),
+        meta: { title: '折线图2', noCache: true, icon: 'chart' }
+      },
+      {
+        path: 'bar2',
+        name: 'Bar2',
+        component: () => import('@/views/charts/bar'),
+        meta: { title: '直方图2', noCache: true, icon: 'chart' }
+      }
+    ]
+  },
+  {
+    path: '/table',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Table',
+        component: () => import('@/views/table/index'),
+        meta: { title: '实时数据', noCache: true, icon: 'table' }
+      },
+      {
+        path: 'details/:id(\\d+)',
+        component: () => import('@/views/table/details'),
+        name: 'Details',
+        meta: { title: '详情', noCache: true, activeMenu: '/table' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/history',
+    component: Layout,
+    redirect: '/history/export',
+    name: 'History',
+    meta: {
+      title: '历史记录',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'chart',
+        name: 'Line',
+        component: () => import('@/views/history/lineChart'),
+        meta: { title: '历史温湿度', noCache: true, icon: 'chart' }
+      },
+      {
+        path: 'export',
+        name: 'Export',
+        component: () => import('@/views/history/export'),
+        meta: { title: '历史记录导出', noCache: true, icon: 'chart' }
+      }
+    ]
+  },
+  {
+    path: '/alarm',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Alarm',
+        component: () => import('@/views/alarm/index'),
+        meta: { title: '报警记录', noCache: true, icon: 'table' }
+      }
+    ]
+  },
+  {
+    path: '/operation',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Operation',
+        component: () => import('@/views/operation/index'),
+        meta: { title: '操作记录', noCache: true, icon: 'table' }
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,
