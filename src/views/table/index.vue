@@ -103,6 +103,9 @@
 
           </el-table-column>
         </el-table>
+        <div>
+          <el-button  style="width: 100%">添加</el-button>
+        </div>
       </el-col>
       <el-col :span="4">
         <!--        组件吸附 在页面固定位置不动-->

@@ -1,6 +1,6 @@
 <template>
   <div class="tab-container">
-    <el-tabs v-model="activeName" style="margin-top:15px;" type="border-card">
+    <el-tabs v-model="activeName" style="margin-top:15px;" type="border-card" @tab-click="tabClick">
       <el-tab-pane key="corporation" label="集团" name="corporation">
         <div class="header">
           <div class="search">
@@ -109,6 +109,9 @@
               @change="handleChange"
             />
           </div>
+          <div class="add">
+            <el-button icon="el-icon-plus" circle type="success"></el-button>
+          </div>
         </div>
         <el-table
           :data="farmList.filter(data => !corporationValue[0]||data.corporationId===corporationValue[0]) | searchFilter(farmSearch)"
@@ -211,7 +214,8 @@
           border
           fit
           highlight-current-row
-          style="width: 100%">
+          style="width: 100%"
+        >
           <el-table-column
             v-loading="loading"
             align="center"
@@ -495,10 +499,6 @@
     watch: {
       activeName(val) {
         this.$router.push(`${this.$route.path}?tab=${val}`)
-        this.current = [0, 0, 0]
-        this.corporationSearch = ''
-        this.farmSearch = ''
-        this.houseSearch = ''
       }
     },
     created() {
@@ -549,6 +549,12 @@
         setTimeout(function () {
           that.popperDisabled = false
         }, 500)
+      },
+      tabClick(event) {
+        this.current = [0, 0, 0]
+        this.corporationSearch = ''
+        this.farmSearch = ''
+        this.houseSearch = ''
       }
     }
   }
