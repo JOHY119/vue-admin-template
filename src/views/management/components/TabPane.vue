@@ -230,6 +230,10 @@
           deleted: 'danger'
         }
         return statusMap[status]
+      },
+      searchFilter(item, keywords) {
+        console.log(Object.values(item))
+        return item
       }
     },
     props: {
