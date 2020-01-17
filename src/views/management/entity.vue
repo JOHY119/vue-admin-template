@@ -18,7 +18,7 @@
           :data="corporationList | searchFilter(corporationSearch)"
           border
           fit
-          highlight-current-row
+          stripe
           style="width: 100%">
           <el-table-column
             key="id"
@@ -117,7 +117,7 @@
           :data="farmList.filter(data => !corporationValue[0]||data.corporationId===corporationValue[0]) | searchFilter(farmSearch)"
           border
           fit
-          highlight-current-row
+          stripe
           style="width: 100%"
         >
           <el-table-column
@@ -213,7 +213,7 @@
           :data="houseList.filter(data =>(!farmValue[1] && !farmValue[0])||(data.farmId===farmValue[1])||((!farmValue[1])&&(data.corporationId===farmValue[0]))) | searchFilter(houseSearch)"
           border
           fit
-          highlight-current-row
+          stripe
           style="width: 100%"
         >
           <el-table-column
