@@ -204,7 +204,7 @@
               :options="farmListComputed"
               :props="{ expandTrigger: 'hover',label:'name',value:'id',key:'id',checkStrictly:true}"
               clearable
-              @change="handleChange"
+              @expand="handleTest"
               id="super-el"
             />
           </div>

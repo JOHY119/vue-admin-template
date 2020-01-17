@@ -79,42 +79,6 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/chart',
-    component: Layout,
-    redirect: '/chart/bar2',
-    name: 'Chart',
-    meta: {
-      title: '图表',
-      icon: 'chart'
-    },
-    children: [
-      // {
-      //   path: 'bar',
-      //   name: 'BarMain',
-      //   component: () => import('@/views/bar/index'),
-      //   meta: { title: '柱状图', icon: 'chart' }
-      // },
-      // {
-      //   path: 'line',
-      //   name: 'LineMain',
-      //   component: () => import('@/views/line/index'),
-      //   meta: { title: '折线图', icon: 'chart' }
-      // },
-      {
-        path: 'line2',
-        name: 'Line2',
-        component: () => import('@/views/charts/line'),
-        meta: { title: '折线图2', noCache: true, icon: 'chart' }
-      },
-      {
-        path: 'bar2',
-        name: 'Bar2',
-        component: () => import('@/views/charts/bar'),
-        meta: { title: '直方图2', noCache: true, icon: 'chart' }
-      }
-    ]
-  },
-  {
     path: '/table',
     component: Layout,
     children: [
@@ -130,6 +94,24 @@ export const constantRoutes = [
         name: 'Details',
         meta: { title: '详情', noCache: true, activeMenu: '/table' },
         hidden: true
+      }
+    ]
+  },
+  {
+    path: '/chart',
+    component: Layout,
+    redirect: '/chart/bar2',
+    name: 'Chart',
+    meta: {
+      title: '图表',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'bar',
+        name: 'Bar',
+        component: () => import('@/views/charts/bar'),
+        meta: { title: '实时温湿度对比', noCache: true, icon: 'chart' }
       }
     ]
   },
@@ -178,18 +160,6 @@ export const constantRoutes = [
         name: 'Operation',
         component: () => import('@/views/operation/index'),
         meta: { title: '操作记录', noCache: true, icon: 'table' }
-      }
-    ]
-  },
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
       }
     ]
   }
