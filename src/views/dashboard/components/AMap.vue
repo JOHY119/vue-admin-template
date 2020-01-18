@@ -57,6 +57,7 @@
         const that = this
         this.chart.on('click', 'series.effectScatter', function(parmas) {
           that.$router.push('/table/index')
+
           console.log(parmas)
         })
         // window.addEventListener('resize', () => {

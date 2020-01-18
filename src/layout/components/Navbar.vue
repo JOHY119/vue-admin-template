@@ -1,14 +1,15 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar"/>
 
-    <breadcrumb class="breadcrumb-container" />
+    <breadcrumb class="breadcrumb-container"/>
 
     <div class="right-menu">
       <div class="right-menu-item">
         <el-cascader
           v-model="value"
           :options="options"
+          clearable
           @change="handleChange"
         />
       </div>
@@ -16,7 +17,7 @@
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
+          <i class="el-icon-caret-bottom"/>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
@@ -52,39 +53,38 @@
     data() {
       return {
         value: [],
-        options:
-          [
-            {
-              value: 'zhinan',
-              label: '指南',
+        options: [
+          {
+            value: 'zhinan',
+            label: '指南',
+            children: [{
+              value: 'shejiyuanze',
+              label: '设计原则',
               children: [{
-                value: 'shejiyuanze',
-                label: '设计原则',
-                children: [{
-                  value: 'yizhi',
-                  label: '一致'
-                }, {
-                  value: 'fankui',
-                  label: '反馈'
-                }, {
-                  value: 'xiaolv',
-                  label: '效率'
-                }, {
-                  value: 'kekong',
-                  label: '可控'
-                }]
+                value: 'yizhi',
+                label: '一致'
               }, {
-                value: 'daohang',
-                label: '导航',
-                children: [{
-                  value: 'cexiangdaohang',
-                  label: '侧向导航'
-                }, {
-                  value: 'dingbudaohang',
-                  label: '顶部导航'
-                }]
+                value: 'fankui',
+                label: '反馈'
+              }, {
+                value: 'xiaolv',
+                label: '效率'
+              }, {
+                value: 'kekong',
+                label: '可控'
               }]
             }, {
+              value: 'daohang',
+              label: '导航',
+              children: [{
+                value: 'cexiangdaohang',
+                label: '侧向导航'
+              }, {
+                value: 'dingbudaohang',
+                label: '顶部导航'
+              }]
+            }]
+          }, {
             value: 'zujian',
             label: '组件',
             children: [{
@@ -264,6 +264,9 @@
       async logout() {
         await this.$store.dispatch('user/logout')
         this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      },
+      handleChange(val) {
+        console.log(val)
       }
     }
   }
