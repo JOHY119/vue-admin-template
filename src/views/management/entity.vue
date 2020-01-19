@@ -6,10 +6,11 @@
           <div class="search">
             <span>搜索：</span>
             <el-input
-              style="width: auto"
               v-model="corporationSearch"
+              style="width: auto"
               clearable
-              placeholder="请输入搜索内容">
+              placeholder="请输入搜索内容"
+            >
               <i slot="prefix" class="el-input__icon el-icon-search"/>
             </el-input>
           </div>
@@ -19,24 +20,25 @@
           border
           fit
           stripe
-          style="width: 100%">
+          style="width: 100%"
+        >
           <el-table-column
             key="id"
-            v-loading="loading"
+            v-loading="listLoading"
             align="center"
             label="ID"
             width="65"
             element-loading-text="请给我点时间！"
           >
             <template slot-scope="scope">
-              <span>{{ scope.row.id }}</span>
+              <span>{{ scope.$index+1 }}</span>
             </template>
           </el-table-column>
 
           <el-table-column key="createTimestamp" width="180px" align="center" label="创建时间">
             <template slot-scope="scope">
               <!--使用parseTime格式化时间戳-->
-              <span>{{ scope.row.createTimestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+              <span>{{ scope.row.createDateTime }}</span>
             </template>
           </el-table-column>
 
@@ -47,18 +49,18 @@
             </template>
           </el-table-column>
 
-          <el-table-column width="110px" align="center" label="下属厂数量">
-            <template slot-scope="scope">
-              <span>{{ scope.row.farmNumber }}</span>
-            </template>
-          </el-table-column>
+          <!--          <el-table-column width="110px" align="center" label="下属厂数量">-->
+          <!--            <template slot-scope="scope">-->
+          <!--              <span>{{ scope.row.farmNumber }}</span>-->
+          <!--            </template>-->
+          <!--          </el-table-column>-->
 
-          <el-table-column width="120px" label="关联账户数量">
-            <template slot-scope="scope">
-              <!--        <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star"/>-->
-              <span>{{ scope.row.accountNumber }}</span>
-            </template>
-          </el-table-column>
+          <!--          <el-table-column width="120px" label="关联账户数量">-->
+          <!--            <template slot-scope="scope">-->
+          <!--              &lt;!&ndash;        <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star"/>&ndash;&gt;-->
+          <!--              <span>{{ scope.row.accountNumber }}</span>-->
+          <!--            </template>-->
+          <!--          </el-table-column>-->
 
           <el-table-column label="操作项" align="center">
             <template slot-scope="scope">
@@ -92,10 +94,11 @@
           <div class="search">
             <span>搜索：</span>
             <el-input
-              style="width: auto"
               v-model="farmSearch"
+              style="width: auto"
               clearable
-              placeholder="请输入搜索内容">
+              placeholder="请输入搜索内容"
+            >
               <i slot="prefix" class="el-input__icon el-icon-search"/>
             </el-input>
           </div>
@@ -110,7 +113,7 @@
             />
           </div>
           <div class="add">
-            <el-button icon="el-icon-plus" circle type="success"></el-button>
+            <el-button icon="el-icon-plus" circle type="success"/>
           </div>
         </div>
         <el-table
@@ -121,21 +124,21 @@
           style="width: 100%"
         >
           <el-table-column
-            v-loading="loading"
+            v-loading="listLoading"
             align="center"
             label="ID"
             width="65"
             element-loading-text="请给我点时间！"
           >
             <template slot-scope="scope">
-              <span>{{ scope.row.id }}</span>
+              <span>{{ scope.$index+1 }}</span>
             </template>
           </el-table-column>
 
           <el-table-column width="180px" align="center" label="创建时间">
             <template slot-scope="scope">
               <!--使用parseTime格式化时间戳-->
-              <span>{{ scope.row.createTimestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+              <span>{{ scope.row.createDateTime }}</span>
             </template>
           </el-table-column>
 
@@ -146,22 +149,22 @@
             </template>
           </el-table-column>
 
-          <el-table-column width="110px" align="center" label="下属舍数量">
-            <template slot-scope="scope">
-              <span>{{ scope.row.houseNumber }}</span>
-            </template>
-          </el-table-column>
+          <!--          <el-table-column width="110px" align="center" label="下属舍数量">-->
+          <!--            <template slot-scope="scope">-->
+          <!--              <span>{{ scope.row.houseNumber }}</span>-->
+          <!--            </template>-->
+          <!--          </el-table-column>-->
 
-          <el-table-column width="100px" label="关联账户数量">
-            <template slot-scope="scope">
-              <!--        <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star"/>-->
-              <span>{{ scope.row.accountNumber }}</span>
-            </template>
-          </el-table-column>
+          <!--          <el-table-column width="100px" label="关联账户数量">-->
+          <!--            <template slot-scope="scope">-->
+          <!--              &lt;!&ndash;        <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star"/>&ndash;&gt;-->
+          <!--              <span>{{ scope.row.accountNumber }}</span>-->
+          <!--            </template>-->
+          <!--          </el-table-column>-->
 
           <el-table-column label="所属集团">
             <template slot-scope="{row}">
-              <span>{{ row.corporationName }}</span>
+              <span>{{ findCorp(row) }}</span>
             </template>
           </el-table-column>
 
@@ -190,48 +193,49 @@
           <div class="search">
             <span>搜索：</span>
             <el-input
-              style="width: auto"
               v-model="houseSearch"
+              style="width: auto"
               clearable
-              placeholder="请输入搜索内容">
+              placeholder="请输入搜索内容"
+            >
               <i slot="prefix" class="el-input__icon el-icon-search"/>
             </el-input>
           </div>
           <div class="block">
             <span class="demonstration">筛选：</span>
             <el-cascader
+              id="super-el"
               v-model="farmValue"
               :options="farmListComputed"
               :props="{ expandTrigger: 'hover',label:'name',value:'id',key:'id',checkStrictly:true}"
               clearable
               @expand="handleTest"
-              id="super-el"
             />
           </div>
         </div>
         <el-table
-          :data="houseList.filter(data =>(!farmValue[1] && !farmValue[0])||(data.farmId===farmValue[1])||((!farmValue[1])&&(data.corporationId===farmValue[0]))) | searchFilter(houseSearch)"
+          :data="houseTableDataComputed"
           border
           fit
           stripe
           style="width: 100%"
         >
           <el-table-column
-            v-loading="loading"
+            v-loading="listLoading"
             align="center"
             label="ID"
             width="65"
             element-loading-text="请给我点时间！"
           >
             <template slot-scope="scope">
-              <span>{{ scope.row.id }}</span>
+              <span>{{ scope.row.id.substring(0,5) }}</span>
             </template>
           </el-table-column>
 
           <el-table-column width="180px" align="center" label="创建时间">
             <template slot-scope="scope">
               <!--使用parseTime格式化时间戳-->
-              <span>{{ scope.row.createTimestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+              <span>{{ scope.row.createDateTime }}</span>
             </template>
           </el-table-column>
 
@@ -242,52 +246,42 @@
             </template>
           </el-table-column>
 
-          <el-table-column width="120px" label="关联账户数量">
-            <template slot-scope="scope">
-              <!--        <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star"/>-->
-              <span>{{ scope.row.accountNumber }}</span>
-            </template>
-          </el-table-column>
-
-          <el-table-column min-width="300px" label="所属集团">
-            <template slot-scope="{row}">
-              <span>{{ row.corporationName }}</span>
-              <el-tag>{{ row.corporationId }}</el-tag>
-            </template>
-          </el-table-column>
+          <!--          <el-table-column width="120px" label="关联账户数量">-->
+          <!--            <template slot-scope="scope">-->
+          <!--              &lt;!&ndash;        <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star"/>&ndash;&gt;-->
+          <!--              <span>{{ scope.row.accountNumber }}</span>-->
+          <!--            </template>-->
+          <!--          </el-table-column>-->
 
           <el-table-column min-width="300px" label="所属养殖场">
             <template slot-scope="{row}">
-              <span>{{ row.farmName }}</span>
-              <el-tag>{{ row.farmId }}</el-tag>
+              <span>{{ findFarm(row) }}</span>
+              <!--              <el-tag>{{ row.farmId }}</el-tag>-->
             </template>
           </el-table-column>
 
           <el-table-column label="操作项" align="center">
             <template>
-              <el-popover
-                ref="action-popover"
-                :open-delay="100"
-                placement="bottom"
-                trigger="hover"
-              >
-                <div align="center">
-                  <el-button-group align="center">
-                    <!--              <el-button type="info">修改</el-button>-->
-                    <el-button type="success" size="small" icon="el-icon-edit">
-                      <span>修改</span>
-                    </el-button>
-                    <!--              <el-button type="danger">删除</el-button>-->
-                  </el-button-group>
-
-                </div>
-              </el-popover>
-              <el-button v-popover:action-popover>操作</el-button>
-
+              <el-button-group align="center">
+                <!--              <el-button type="info">修改</el-button>-->
+                <el-button type="success" size="small" icon="el-icon-edit">
+                  <span>修改</span>
+                </el-button>
+                <!--              <el-button type="danger">删除</el-button>-->
+              </el-button-group>
             </template>
 
           </el-table-column>
         </el-table>
+
+        <pagination
+          v-show="total>0"
+          :total="total"
+          :page.sync="listQuery.page"
+          :limit.sync="listQuery.limit"
+          @pagination="fetchHouseList"
+        />
+
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -295,10 +289,16 @@
 
 <script>
   // import tabPane from './components/TabPane'
+  import {getCorporationList, getFarmList, getHouseList} from '@/api/entity'
+  import elTableInfiniteScroll from 'el-table-infinite-scroll'
+  import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
   export default {
     name: 'Tab',
-    components: {},
+    components: {Pagination},
+    directives: {
+      'el-table-infinite-scroll': elTableInfiniteScroll
+    },
     filters: {
       searchFilter(data, keywords) {
         return data.filter((item) => {
@@ -307,133 +307,27 @@
             // console.log(String(value).toLowerCase().indexOf(keywords) > -1)
             return (String(value).toLowerCase().indexOf(keywords) > -1)
           })
-          console.log(result)
+          // console.log(result)
           return result
         })
       }
     },
     data() {
       return {
+        total: 0,
+        listQuery: {
+          page: 1,
+          limit: 20
+        },
         tabMapOptions: [
           {label: '集团', key: 'corporation'},
           {label: '养殖场', key: 'farm'},
           {label: '养殖舍', key: 'house'}
         ],
         tabLevel: ['corporation', 'farm', 'house'],
-        corporationList: [
-          {
-            'type': 'corporation',
-            'id': 1,
-            'name': '青岛一集团',
-            'createTimestamp': 271130384359,
-            'farmNumber': 3,
-            'accountNumber': 1
-          },
-          {
-            'type': 'corporation',
-            'id': 2,
-            'name': '浙江二集团',
-            'createTimestamp': 271130384359,
-            'farmNumber': 4,
-            'accountNumber': 2
-          }
-        ],
-        farmList: [
-          {
-            'type': 'farm',
-            'id': 1,
-            'name': '青岛新六合有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 1,
-            'corporationName': '青岛一集团'
-          },
-          {
-            'type': 'farm',
-            'id': 2,
-            'name': '青岛新7合有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 1,
-            'corporationName': '青岛一集团'
-          },
-          {
-            'type': 'farm',
-            'id': 3,
-            'name': '青岛新8合有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 1,
-            'corporationName': '青岛一集团'
-          },
-          {
-            'type': 'farm',
-            'id': 6,
-            'name': '浙江zz有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 2,
-            'corporationName': '浙江二集团'
-          },
-          {
-            'type': 'farm',
-            'id': 7,
-            'name': '浙江zz有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 2,
-            'corporationName': '浙江二集团'
-          },
-          {
-            'type': 'farm',
-            'id': 8,
-            'name': '浙江zz有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 2,
-            'corporationName': '浙江二集团'
-          },
-          {
-            'type': 'farm',
-            'id': 9,
-            'name': '浙江zz有限公司',
-            'createTimestamp': 271130384359,
-            'houseNumber': 12,
-            'accountNumber': 1,
-            'corporationId': 2,
-            'corporationName': '浙江二集团'
-          }
-        ],
-        houseList: [
-          {
-            'type': 'house',
-            'id': 1001,
-            'name': '鸡舍',
-            'createTimestamp': 271130384359,
-            'accountNumber': 0,
-            'corporationId': 1,
-            'corporationName': '青岛一集团',
-            'farmId': 1,
-            'farmName': '青岛新六合有限公司'
-          },
-          {
-            'type': 'house',
-            'id': 8010,
-            'name': '10',
-            'createTimestamp': 271130384359,
-            'accountNumber': 1,
-            'corporationId': 2,
-            'corporationName': '浙江二集团',
-            'farmId': 8,
-            'farmName': '浙江zz有限公司'
-          }
-        ],
+        corporationList: [],
+        farmList: [],
+        houseList: [],
         current: [0, 0, 0],
         currentIdList: [],
         activeName: 'corporation',
@@ -442,7 +336,8 @@
         popperDisabled: false,
         farmSearch: '',
         corporationSearch: '',
-        houseSearch: ''
+        houseSearch: '',
+        listLoading: false
       }
     },
     computed: {
@@ -494,6 +389,38 @@
           // console.log(vCorpList)
           return vCorpList
         }
+      },
+      houseTableDataComputed: function () {
+        const classifyResult = this.houseList.filter(data => (
+            // 集团id和厂id都不存在 全返回
+          !this.farmValue[1] && !this.farmValue[0]) ||
+          // 厂id存在 按照厂分类
+          (data.farmId === this.farmValue[1]) ||
+          // 厂id不存在 按照集团分类
+          ((!this.farmValue[1]) && (data.corporationId === this.farmValue[0])))
+
+        // todo 添加所属养殖场字段
+        classifyResult.map(row => {
+          const r = this.farmList.find(farm => {
+            return farm.id === row.farmId
+          })
+          if (!r) {
+            return ''
+          }
+          return r.name
+        })
+
+        const keywords = this.houseSearch
+        const searchResult = classifyResult.filter((item) => {
+          // console.log(result)
+          return Object.values(item).some(value => {
+            // console.log(value)
+            // console.log(String(value).toLowerCase().indexOf(keywords) > -1)
+            return (String(value).toLowerCase().indexOf(keywords) > -1)
+          })
+        })
+
+        return searchResult
       }
     },
     watch: {
@@ -507,18 +434,41 @@
       if (tab) {
         this.activeName = tab
       }
+      this.fetchCorporationList()
+      this.fetchFarmList()
+      this.fetchHouseList()
     },
     mounted() {
       // document.getElementById('cascader-menu-6420-0').addEventListener('click', function () {
       //   console.log(arguments)
       // })
-      const v2 = this.$el.querySelector('#super-el .el-cascader-panel')
-      console.log(v2)
-      v2.addEventListener('click', function (event) {
-        console.log(event.target.innerText)
-      })
     },
     methods: {
+      fetchCorporationList() {
+        this.listLoading = true
+        console.log('fetch Corporation List')
+        getCorporationList().then(response => {
+          this.corporationList = response.data.items
+          this.loading = false
+        })
+      },
+      fetchFarmList() {
+        this.listLoading = true
+        console.log('fetch Farm List')
+        getFarmList().then(response => {
+          this.farmList = response.data.items
+          this.loading = false
+        })
+      },
+      fetchHouseList() {
+        this.listLoading = true
+        console.log('fetch house List')
+        getHouseList().then(response => {
+          this.total = response.data.total
+          this.houseList = response.data.items
+          this.loading = false
+        })
+      },
       showCreatedTimes() {
         this.createdTimes = this.createdTimes + 1
       },
@@ -555,6 +505,27 @@
         this.corporationSearch = ''
         this.farmSearch = ''
         this.houseSearch = ''
+      },
+      load() {
+        console.log('load')
+      },
+      findCorp(row) {
+        const r = this.corporationList.find(corp => {
+          return corp.id === row.corporationId
+        })
+        if (!r) {
+          return ''
+        }
+        return r.name
+      },
+      findFarm(row) {
+        const r = this.farmList.find(farm => {
+          return farm.id === row.farmId
+        })
+        if (!r) {
+          return ''
+        }
+        return r.name
       }
     }
   }
