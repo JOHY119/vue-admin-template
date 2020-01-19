@@ -405,12 +405,14 @@
             return farm.id === row.farmId
           })
           if (!r) {
-            return ''
+            row['farmName'] = ''
           }
-          return r.name
+          row['farmName'] = r.name
         })
 
         const keywords = this.houseSearch
+        // todo bug id搜索的是全部 但是显示只显示了前5位
+        // 不显示的字段也被搜索了 后期要去掉
         const searchResult = classifyResult.filter((item) => {
           // console.log(result)
           return Object.values(item).some(value => {
@@ -419,8 +421,11 @@
             return (String(value).toLowerCase().indexOf(keywords) > -1)
           })
         })
+        const limit = this.listQuery.limit
+        const page = this.listQuery.page
+        const pageList = searchResult.filter((item, index) => index < limit * page && index >= limit * (page - 1))
 
-        return searchResult
+        return pageList
       }
     },
     watch: {
