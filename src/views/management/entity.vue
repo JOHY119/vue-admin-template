@@ -279,8 +279,9 @@
           :total="total"
           :page.sync="listQuery.page"
           :limit.sync="listQuery.limit"
-          @pagination="fetchHouseList"
         />
+        <!--        每次点击都会触发此函数 从网络获得数据  此处只需要动态更改listQuery即可 不需要触发函数-->
+        <!--          @pagination="fetchHouseList"-->
 
       </el-tab-pane>
     </el-tabs>
@@ -423,6 +424,8 @@
         })
         const limit = this.listQuery.limit
         const page = this.listQuery.page
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.total = searchResult.length
         const pageList = searchResult.filter((item, index) => index < limit * page && index >= limit * (page - 1))
 
         return pageList
