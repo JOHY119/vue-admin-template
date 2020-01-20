@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="list" border fit highlight-current-row style="width: 100%">
+  <el-table :data="list.filter(item=>item.type===type)" border fit highlight-current-row style="width: 100%">
     <el-table-column
       v-loading="loading"
       align="center"
@@ -8,7 +8,7 @@
       element-loading-text="请给我点时间！"
     >
       <template slot-scope="scope">
-        <span>{{ scope.row.id }}</span>
+        <span>{{ scope.row.id.substring(0,5) }}</span>
       </template>
     </el-table-column>
 
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-  import {fetchList} from '@/api/article'
+  import {fetchUserList} from '@/api/user'
 
   export default {
     filters: {
@@ -99,13 +99,13 @@
       }
     },
     created() {
-      // this.getList()
+      this.getUserList()
     },
     methods: {
-      getList() {
+      getUserList() {
         this.loading = true
         this.$emit('create') // for test
-        fetchList(this.listQuery).then(response => {
+        fetchUserList(this.listQuery).then(response => {
           this.list = response.data.items
           this.loading = false
         })
