@@ -280,6 +280,9 @@
           :page.sync="listQuery.page"
           :limit.sync="listQuery.limit"
         />
+        <!--  todo 将三个表格分别放到三个组件中去       -->
+        <!--  todo 考虑将corpList farmList放到vuex中去 -->
+
         <!--        每次点击都会触发此函数 从网络获得数据  此处只需要动态更改listQuery即可 不需要触发函数-->
         <!--          @pagination="fetchHouseList"-->
 

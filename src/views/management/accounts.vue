@@ -20,9 +20,8 @@
           {label: '集团', key: 'corporation'},
           {label: '养殖场', key: 'farm'},
           {label: '养殖舍', key: 'house'},
-          {label: '展示账户', key: 'display'},
-          {label: '管理员账户', key: 'admin'}
-        ],
+          {label: '展示账户', key: 'display'}
+          ],
         activeName: 'corporation',
         createdTimes: 0
       }
