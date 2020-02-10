@@ -2,61 +2,61 @@ const corporationList = [
   {
     'type': 'corporation',
     'id': 'f5a021b5-a08b-4f4c-b2e4-2af06dad8731',
-    'name': '惠派国际公司科技有限公司',
+    'name': '惠派国际公司科技集团',
     'createDateTime': '2018-05-20 06:51:08',
     'farmNumber': 3
   }, {
     'type': 'corporation',
     'id': '152a6856-75fe-4eb9-ae97-9783a8f46bc8',
-    'name': '图龙信息信息有限公司',
+    'name': '图龙信息信息集团',
     'createDateTime': '2013-08-19 20:27:52',
     'farmNumber': 6
   }, {
     'type': 'corporation',
     'id': 'd42cf40c-825d-4b88-b5d6-f823006e6427',
-    'name': '昂歌信息传媒有限公司',
+    'name': '昂歌信息传媒集团',
     'createDateTime': '2009-09-06 23:37:18',
     'farmNumber': 5
   }, {
     'type': 'corporation',
     'id': '19a98181-8aea-4637-9428-3e08293b952b',
-    'name': '双敏电子科技有限公司',
+    'name': '双敏电子科技集团',
     'createDateTime': '2016-07-30 18:20:09',
     'farmNumber': 3
   }, {
     'type': 'corporation',
     'id': '4fd64af1-16df-4693-a9bc-fc75d583b8b9',
-    'name': '巨奥传媒有限公司',
+    'name': '巨奥传媒集团',
     'createDateTime': '2002-09-02 03:51:22',
     'farmNumber': 2
   }, {
     'type': 'corporation',
     'id': '3e6fd04c-b092-4f0f-aa35-aebcd88e7af6',
-    'name': '鸿睿思博传媒有限公司',
+    'name': '鸿睿思博传媒集团',
     'createDateTime': '2007-10-11 13:58:46',
     'farmNumber': 5
   }, {
     'type': 'corporation',
     'id': '789acbb5-d671-4483-9842-e0d32b86ed2e',
-    'name': '商软冠联科技有限公司',
+    'name': '商软冠联科技集团',
     'createDateTime': '2004-02-22 09:13:14',
     'farmNumber': 8
   }, {
     'type': 'corporation',
     'id': '9e09e0b5-41d6-4c8e-9e17-bb33beb47fa5',
-    'name': '襄樊地球村网络有限公司',
+    'name': '襄樊地球村网络集团',
     'createDateTime': '2019-07-21 16:51:35',
     'farmNumber': 4
   }, {
     'type': 'corporation',
     'id': '6e078473-6f5e-4ce2-8384-642a230c23f1',
-    'name': '易动力网络有限公司',
+    'name': '易动力网络集团',
     'createDateTime': '2013-05-25 05:56:24',
     'farmNumber': 2
   }, {
     'type': 'corporation',
     'id': '1b8276df-d6b5-4cf2-9b58-dbff9ffa45c7',
-    'name': '南康信息有限公司',
+    'name': '南康信息集团',
     'createDateTime': '2006-05-20 10:51:16',
     'farmNumber': 10
   }]
@@ -3382,7 +3382,13 @@ export default [
     type: 'get',
     response: config => {
       // const {page = 1, limit = 20} = config.query
-      const items = houseList
+      const {farmId} = config.query
+      // 根据是否有farmId决定返回值
+      console.log(config)
+      console.log(farmId)
+      console.log(houseList)
+      const items = farmId ? houseList.filter(item => item.farmId === farmId) : houseList
+      // const items = houseList
       // const pageList = items.filter((item, index) => index < limit * page && index >= limit * (page - 1))
 
       return {

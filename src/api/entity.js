@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function getCorporationList(params) {
+export function fetchCorporationList(params) {
   return request({
     url: '/entity/corporation',
     method: 'get',
@@ -8,7 +8,7 @@ export function getCorporationList(params) {
   })
 }
 
-export function getFarmList(params) {
+export function fetchFarmList(params) {
   return request({
     url: '/entity/farm',
     method: 'get',
@@ -16,7 +16,7 @@ export function getFarmList(params) {
   })
 }
 
-export function getHouseList(params) {
+export function fetchHouseList(params) {
   return request({
     url: '/entity/house',
     method: 'get',

@@ -37,6 +37,7 @@ export default [
         'items|12': [{
           'id|+1': 1,
           'uuid|+1': 1001001,
+          'name|+1': 1001001,
           days: '@integer(300, 5000)',
           temperature: '@integer(10, 50)',
           moisture: '@integer(20, 100)',

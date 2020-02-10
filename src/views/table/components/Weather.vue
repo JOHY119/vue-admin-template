@@ -6,6 +6,7 @@
     longitude="120.436"
     language="zh"
     :hide-header="true"
+    :update-interval="86400"
     units="si">
   </weather>
 </template>
