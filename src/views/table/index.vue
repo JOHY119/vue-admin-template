@@ -14,8 +14,7 @@
           <el-table-column key="name" align="center" label="舍名">
             <template slot-scope="scope">
               {{ scope.row.name }}
-              <i class="el-icon-edit-outline" style="cursor: pointer" @click="changeHouseName(scope.row)"></i>
-              <!--              <el-button icon="el-icon-edit" size="mini"></el-button>-->
+              <i class="el-icon-edit-outline" style="cursor: pointer" @click="showDialogChangeName(scope.row)"></i>
             </template>
           </el-table-column>
           <el-table-column key="days" align="center" label="日龄">
@@ -28,7 +27,7 @@
               <span>{{ scope.row.temperature }}</span>
             </template>
           </el-table-column>
-          <el-table-column key="moisture" label="实测湿度" width="110" align="center">
+          <el-table-column key="moisture" label="实测湿度" align="center">
             <template slot-scope="scope">
               {{ scope.row['moisture'] }}
             </template>
@@ -80,27 +79,19 @@
           <!--      </el-table-column>-->
           <el-table-column label="操作项" align="center">
             <template slot-scope="scope">
-              <el-popover
-                ref="action-popover"
-                :open-delay="100"
-                :close-delay="100"
-                placement="bottom"
-                trigger="hover"
-              >
-                <div align="center">
-                  <el-button-group align="center">
-                    <!--              <el-button type="info">修改</el-button>-->
-                    <router-link :to="'/table/details/'+scope.row.uuid">
-                      <el-button type="primary" size="small" icon="el-icon-edit">
-                        查看详情
-                      </el-button>
-                    </router-link>
-                    <!--              <el-button type="danger">删除</el-button>-->
-                  </el-button-group>
 
-                </div>
-              </el-popover>
-              <el-button v-popover:action-popover>操作</el-button>
+              <div align="center">
+                <el-button-group align="center">
+                  <!--              <el-button type="info">修改</el-button>-->
+                  <router-link :to="'/table/details/'+scope.row.uuid">
+                    <el-button type="primary" size="mini" icon="el-icon-edit">
+                      详情
+                    </el-button>
+                  </router-link>
+                  <!--              <el-button type="danger">删除</el-button>-->
+                </el-button-group>
+
+              </div>
 
             </template>
 
