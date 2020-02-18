@@ -22,7 +22,8 @@
         />
       </div>
       <div class="add">
-        <el-button icon="el-icon-plus" circle type="success"/>
+        <el-button type="primary" icon="el-icon-plus">添加</el-button>
+        <!--        todo: 添加 add Corp farm dialog 应该放在上一级组件中-->
       </div>
     </header>
     <main>
@@ -206,5 +207,12 @@
 </script>
 
 <style scoped>
+  header {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  header>div {
+    margin-left: 15px;
+  }
 
 </style>

@@ -8,7 +8,6 @@
       <div class="right-menu-item">
         <!--顶栏选择框-->
         <el-cascader
-          ref="select"
           v-model="value"
           :options="corporationFarmList"
           :props="{ expandTrigger: 'hover',label:'name',value:'id',key:'id' }"
@@ -83,14 +82,11 @@
       async logout() {
         await this.$store.dispatch('user/logout')
         this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-      },
+      }
       // 将顶栏选择框选的数据存到vuex中
       // handleChange(val) {
       //   this.$store.dispatch('app/changeGlobalSelected', {corporationId: val[0], farmId: val[1] })
       // }
-      handle() {
-        console.log(this.$refs.select.getCheckedNodes())
-      }
     }
   }
 </script>

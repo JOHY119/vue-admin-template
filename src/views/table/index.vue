@@ -1,5 +1,12 @@
 <template>
   <div class="app-container">
+    <el-alert
+      v-show="!global_farm_id"
+      title="请先选择要显示的养殖场"
+      type="warning"
+      description="在顶栏选择框中选择"
+      show-icon>
+    </el-alert>
     <el-row :gutter="10">
       <!-- 主显示区 -->
       <el-col :span="20">
@@ -254,11 +261,11 @@
       fetchData(farmId) {
         // console.log(farmId)
         if (!farmId) {
-          this.$message({
-            message: '请先选择要显示的养殖场',
-            type: 'error',
-            duration: 5000
-          })
+          // this.$message({
+          //   message: '请先选择要显示的养殖场',
+          //   type: 'error',
+          //   duration: 5000
+          // })
           this.list = []
           this.listLoading = false
           return

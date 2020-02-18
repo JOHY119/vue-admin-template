@@ -163,5 +163,9 @@
 </script>
 
 <style scoped>
+  header {
+    display: flex;
+    margin-bottom: 20px;
+  }
 
 </style>
