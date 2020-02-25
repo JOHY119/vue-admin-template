@@ -141,7 +141,7 @@
                 <!--                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>-->
               </div>
               <!--              为了让隐藏后的天气信息大概居中-->
-              <div style="margin-left: 50px;margin-top: 70px">
+              <div style="margin-left: 20px;margin-top: 70px">
                 <Weather/>
               </div>
             </el-card>

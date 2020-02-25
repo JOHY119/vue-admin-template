@@ -2,11 +2,11 @@
   <div class="tab-container">
     <el-tabs v-model="activeName" style="margin-top:15px;" type="border-card" @tab-click="tabClick">
       <el-tab-pane key="corporation" label="集团" name="corporation">
-        <corporation-tab ref="corporationTab" @to-farm="activeName='farm'"/>
+        <corporation-tab ref="corporationTab" @to-farm="activeName='farm'" @add="showAddDialog"/>
       </el-tab-pane>
 
       <el-tab-pane key="farm" ref="farmTab" label="养殖场" name="farm">
-        <farm-tab @to-house="toHouse"/>
+        <farm-tab @to-house="toHouse" @add="showAddDialog"/>
       </el-tab-pane>
 
       <!--      <el-tab-pane key="house" label="养殖舍" name="house">-->
@@ -106,6 +106,9 @@
 
       <!--      </el-tab-pane>-->
     </el-tabs>
+    <el-dialog title="添加实体" :visible.sync="dialogAdd.visible">
+      <add-collapse :current-tab="activeName"/>
+    </el-dialog>
   </div>
 </template>
 
@@ -113,16 +116,20 @@
   import elTableInfiniteScroll from 'el-table-infinite-scroll'
   import CorporationTab from './components/CorporationTab'
   import FarmTab from './components/FarmTab'
+  import AddCollapse from './components/AddCollapse'
 
   export default {
     name: 'Entity',
-    components: {CorporationTab, FarmTab},
+    components: {CorporationTab, FarmTab, AddCollapse},
     directives: {
       'el-table-infinite-scroll': elTableInfiniteScroll
     },
     data() {
       return {
-        activeName: 'corporation'
+        activeName: 'corporation',
+        dialogAdd: {
+          visible: false
+        }
       }
     },
     watch: {
@@ -171,6 +178,9 @@
             farmId: this.$store.getters.management_farm_id
           })
         this.$router.push(`/table/index`)
+      },
+      showAddDialog(event) {
+        this.dialogAdd.visible = true
       }
     }
   }

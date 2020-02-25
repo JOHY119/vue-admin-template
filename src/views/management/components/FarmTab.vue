@@ -22,7 +22,7 @@
         />
       </div>
       <div class="add">
-        <el-button type="primary" icon="el-icon-plus">添加</el-button>
+        <el-button type="primary" icon="el-icon-plus" @click="$emit('add','farm')">添加</el-button>
         <!--        todo: 添加 add Corp farm dialog 应该放在上一级组件中-->
       </div>
     </header>
@@ -167,7 +167,7 @@
             return corp.id === row.corporationId
           })
           if (!corp) {
-            console.log(corp)
+            // console.log(corp)
             row['corporationName'] = ''
           } else {
             row['corporationName'] = corp.name
@@ -190,6 +190,7 @@
         })
         const limit = this.listQuery.limit
         const page = this.listQuery.page
+        // todo: bug 计算属性中不应该有副作用
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.total = searchResult.length
         return searchResult.filter((item, index) => index < limit * page && index >= limit * (page - 1))

@@ -12,6 +12,10 @@
           <i slot="prefix" class="el-input__icon el-icon-search"/>
         </el-input>
       </div>
+      <div class="add">
+        <el-button type="primary" icon="el-icon-plus" @click="$emit('add','corporation')">添加</el-button>
+        <!--        todo: 添加 add Corp farm dialog 应该放在上一级组件中-->
+      </div>
     </header>
     <main>
       <el-table
@@ -166,6 +170,10 @@
   header {
     display: flex;
     margin-bottom: 20px;
+  }
+
+  header>div {
+    margin-left: 15px;
   }
 
 </style>
